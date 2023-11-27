@@ -1,5 +1,6 @@
 import 'package:control_medicamentos/Functions/botommBar.dart';
 import 'package:control_medicamentos/widgetsPantallas/medicamentos_amoxicilina.dart';
+import 'package:control_medicamentos/widgetsPantallas/nuevo_medicamento.dart';
 import 'package:flutter/material.dart';
 
 import '../Functions/appbar.dart';
@@ -19,7 +20,7 @@ class Medicamentos extends StatelessWidget {
         onPressed: () {
           Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const MedicamentoAmoxilicina()),
+                MaterialPageRoute(builder: (context) => const NuevoMedicamento()),
                 );
         },
         label: const Text(

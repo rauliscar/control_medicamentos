@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+
 class BottomBar extends StatelessWidget {
   const BottomBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
+        
         height: 60,
         indicatorColor: const Color.fromARGB(255, 67, 85, 133),
         destinations: const <Widget>[
