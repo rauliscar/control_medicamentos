@@ -1,7 +1,8 @@
-import 'package:control_medicamentos/Functions/botommBar.dart';
+import 'package:control_medicamentos/Functions/bottom_bar.dart';
 import 'package:control_medicamentos/widgetsPantallas/medicamentos_amoxicilina.dart';
 import 'package:control_medicamentos/widgetsPantallas/nuevo_medicamento.dart';
 import 'package:flutter/material.dart';
+import 'dart:io';
 
 import '../Functions/appbar.dart';
 import '../Functions/drawer.dart';
@@ -19,9 +20,9 @@ class Medicamentos extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const NuevoMedicamento()),
-                );
+            context,
+            MaterialPageRoute(builder: (context) => NuevoMedicamento()),
+          );
         },
         label: const Text(
           'Añadir',
@@ -60,7 +61,7 @@ class Medicamentos extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const MedicamentoAmoxilicina()
+                      MaterialPageRoute(builder: (context) => MedicamentoAmoxilicina()
                       )
                     );
                     },
@@ -121,9 +122,9 @@ class Medicamentos extends StatelessWidget {
                               Container(
                                 width: 180,
                                 margin: const EdgeInsets.only(top: 15),
-                                child: const Text(
-                                  "Unidades restantes: 6",
-                                  style: TextStyle(
+                                child: Text(
+                                  "Unidades restantes: ${unidadesAmoxicilina.toString()}",
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: 16,
                                   ),

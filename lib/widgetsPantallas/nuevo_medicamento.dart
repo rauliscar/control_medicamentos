@@ -1,12 +1,29 @@
 import 'package:control_medicamentos/Functions/appbar.dart';
 import 'package:control_medicamentos/Functions/drawer.dart';
+import 'package:control_medicamentos/widgetsPantallas/medicamentos.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+
 
 class NuevoMedicamento extends StatelessWidget {
-  const NuevoMedicamento({super.key});
+  NuevoMedicamento({Key? key}) : super(key: key);
+
+  File? _image;
+
+  Future<void> _selectImage(ImageSource source) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: source);
+
+    if (pickedFile != null) {
+      // Actualizar la interfaz gráfica con la imagen seleccionada
+      _image = File(pickedFile.path);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 67, 85, 133),
 
@@ -38,10 +55,10 @@ class NuevoMedicamento extends StatelessWidget {
                 child: Column(
                   children: [
             
-                    //Nombre
+                    //Titulo Nombre
                     Container(
                       margin: const EdgeInsets.only(
-                        top: 30.0,
+                        top: 20.0,
                         left: 20.0
                       ),
                       child: const Row(
@@ -56,12 +73,12 @@ class NuevoMedicamento extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),//FinNombre
+                    ),//Fin Titulo Nombre
             
-                    //NombreTextField
+                    //Nombre TextField
                     Container(
                       margin: const EdgeInsets.only(
-                        top: 10.0,
+                        top: 5.0,
                         left: 20.0,
                         right: 20.0
                       ),
@@ -76,10 +93,10 @@ class NuevoMedicamento extends StatelessWidget {
                       ),
                     ),
             
-                    //Alias
+                    //Titulo Alias
                     Container(
                       margin: const EdgeInsets.only(
-                          top: 15.0,
+                          top: 10.0,
                           left: 20.0
                         ),
                       child: const Row(
@@ -94,12 +111,12 @@ class NuevoMedicamento extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),//FinAlias
+                    ),//Fin Titulo Alias
             
-                    //AliasTextField
+                    //Alias TextField
                     Container(
                       margin: const EdgeInsets.only(
-                        top: 10.0,
+                        top: 5.0,
                         left: 20.0,
                         right: 20.0
                       ),
@@ -113,13 +130,13 @@ class NuevoMedicamento extends StatelessWidget {
                       ),
                     ),
             
-                    //Descripción
+                    //Titulo Descripción
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           margin: const EdgeInsets.only(
-                            top: 15.0,
+                            top: 10.0,
                             left: 20.0
                           ),
                           child: const Text(
@@ -132,8 +149,9 @@ class NuevoMedicamento extends StatelessWidget {
                           ),
                         ),
                       ],
-                      ),//Descripción
-            
+                      ),//Titulo Descripción
+
+                    //TextField Descripción
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -141,7 +159,7 @@ class NuevoMedicamento extends StatelessWidget {
                           child: Container(
                             height: 90,
                             margin: const EdgeInsets.only(
-                            top: 10.0,
+                            top: 5.0,
                             left: 20.0,
                             right: 20.0
                             ),
@@ -163,13 +181,13 @@ class NuevoMedicamento extends StatelessWidget {
                       ],
                     ),//FinTextFieldDesripción
             
-                    //Instrucciones
+                    //Titulo Instrucciones
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           margin: const EdgeInsets.only(
-                            top: 15.0,
+                            top: 10.0,
                             left: 20.0
                           ),
                           child: const Text(
@@ -182,35 +200,37 @@ class NuevoMedicamento extends StatelessWidget {
                           ),
                         ),
                       ],
-                      ),
-            
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Container(
-                              height: 50,
-                              padding: const EdgeInsets.only(left: 6.0, right: 6.0, top: 3.0),
-                              margin: const EdgeInsets.only(
-                              top: 5.0,
-                              left: 20.0,
-                              right: 20.0
-                              ),
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 219, 219, 219),
-                              borderRadius: const BorderRadius.all(Radius.circular(5)),
-                              border: Border.all(color: const Color.fromRGBO(0, 0, 0, 1), width: 2),
+                      ),//Fin Titulo Instrucciones
+
+                    //TextField Instrucciones
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 90,
+                            margin: const EdgeInsets.only(
+                            top: 5.0,
+                            left: 20.0,
+                            right: 20.0
                             ),
-                            child: const Text(
-                            "Tomar con agua.",
-                            style: TextStyle(
-                              fontSize: 17,
+                            child: const Scrollbar(
+                              interactive: true,
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  hintText: 'Inserta las instrucciones de uso',
+                                  enabledBorder: OutlineInputBorder(),
+                                  filled: true,
+                                  fillColor: Color.fromARGB(255, 219, 219, 219),
+                                ),
+                                maxLines: 4,
+                              )
                             ),
-                            ),
-                            ),
-                          )
-                        ],
-                    ),//FinInstrucciones
+                          ),
+                        )
+                      ],
+                    ),//FinTextFieldInstrucciones
             
                     //Cantidad Restante
                     Row(
@@ -221,41 +241,122 @@ class NuevoMedicamento extends StatelessWidget {
                                   top: 15.0,
                                   left: 20.0
                                 ),
-                          child: Row(
+                          child: const Row(
                             children: [
-                              const Text(
-                                "Cantidad restante:",
+                              Text(
+                                "Nº de cajas:",
                                 style: TextStyle(
                                   fontSize: 20,
                                   decoration: TextDecoration.underline,
                                   fontWeight: FontWeight.w700
                                 ),
-                              ),
-            
-                              Container(
-                                margin: const EdgeInsets.only(
+                              )
+                            ],
+                          ),
+                        ),
+
+                        Container(
+                          width: 70,
+                          height: 50,
+                          margin: const EdgeInsets.only(
+                            top: 10.0,
+                            left: 20.0,
+                            right: 20.0
+                          ),
+                          child: const TextField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              filled: true,
+                              fillColor: Color.fromARGB(255, 219, 219, 219)
+                            ),
+                            maxLength: 4,
+                          ),
+                        ),
+                      ],
+                    ),//FinCantidadCajas
+
+                    //PastillasCaja
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(
+                                  top: 15.0,
                                   left: 20.0
                                 ),
-                                padding: const EdgeInsets.all(4.0),
-                                decoration: BoxDecoration(
-                                  color: const Color.fromARGB(255, 192, 62, 52),
-                                  borderRadius: const BorderRadius.all(Radius.circular(5)),
-                                  border: Border.all(color: const Color.fromRGBO(0, 0, 0, 1), width: 2),
-                                ),
-                                child: const Text(
-                                  "6",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.white
-                                  ),
+                          child: const Row(
+                            children: [
+                              Text(
+                                "Nº de pastillas por caja:",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  decoration: TextDecoration.underline,
+                                  fontWeight: FontWeight.w700
                                 ),
                               )
                             ],
                           ),
-                        )
+                        ),
+
+                        Container(
+                          width: 70,
+                          height: 50,
+                          margin: const EdgeInsets.only(
+                            top: 10.0,
+                            left: 20.0,
+                            right: 20.0
+                          ),
+                          child: const TextField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              filled: true,
+                              fillColor: Color.fromARGB(255, 219, 219, 219)
+                            ),
+                            maxLength: 4,
+                          ),
+                        ),
                       ],
-                    ),//FinCantidadRestante
-            
+                    ),//FinPastillasCaja
+
+                    // Botones para seleccionar imágenes
+                      Container(
+                        margin: const  EdgeInsets.only(left: 20),
+                        child: Row(
+                          children: [
+
+                            const Text(
+                              "Añadir foto: ",
+                              style: TextStyle(
+                                    fontSize: 20,
+                                    decoration: TextDecoration.underline,
+                                    fontWeight: FontWeight.w700
+                                  ),
+                            ),
+
+                            IconButton(
+                              onPressed: () async {
+                                await _selectImage(ImageSource.gallery);
+                              },
+                              icon: const Icon(Icons.collections,  size: 40),
+                            ),
+
+                            const SizedBox(width: 30,),
+                      
+                            IconButton(
+                              onPressed: () async {
+                                await _selectImage(ImageSource.camera);
+                              },
+                              icon: const Icon(Icons.add_a_photo, size: 40),
+                            ),
+                      
+                            // Mostrar la imagen seleccionada
+                            _image == null
+                                ? Container() // Si no hay imagen, muestra un contenedor vacío
+                                : Image.file(_image!),
+                          ],
+                        ),
+                      ), // Mostrar la imagen seleccionada
+
                     //Botones
                     Container(
                       margin: const EdgeInsets.only(top:13.0, left: 20.0),
@@ -264,25 +365,47 @@ class NuevoMedicamento extends StatelessWidget {
                         children: [
                           ButtonBar(
                             children: [
+                              //Cancelar
                               Container(
+                                width: 130,
+                                height: 50,
                                 margin: const EdgeInsets.only(right: 20),
-                                child: ElevatedButton(  
-                                  style: const ButtonStyle(
-                                    elevation: MaterialStatePropertyAll(5.0),
-                                    shadowColor: MaterialStatePropertyAll( Color.fromARGB(255, 5, 165, 10)),
-                                    minimumSize:MaterialStatePropertyAll(Size(120, 40)),
-                                    backgroundColor: MaterialStatePropertyAll( Color.fromARGB(255, 11, 77, 13))
-                                  ),
-                                  onPressed: () {/** */},  
-                                  child: const Text('Tratamientos'), 
-                                ),
-                              ),  
-                              Container(
-                                margin: const EdgeInsets.only(left: 20),
                                 child: ElevatedButton(   
                                   style: const ButtonStyle(
                                     elevation: MaterialStatePropertyAll(5.0),
-                                    shadowColor: MaterialStatePropertyAll( Color.fromARGB(255, 5, 165, 10)),
+                                    shadowColor: MaterialStatePropertyAll( Color.fromARGB(255, 5, 106, 165)),
+                                    minimumSize:MaterialStatePropertyAll(Size(120, 40)),
+                                    backgroundColor:MaterialStatePropertyAll( Color.fromARGB(255, 207, 110, 31)),
+                                    side: MaterialStatePropertyAll(BorderSide(
+                                      color: Colors.black,
+                                      width: 3.0
+                                    ))
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => const Medicamentos()),
+                                    );
+                                  }, 
+                                  child: const Text(
+                                    'Cancelar', 
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold
+                                      ),
+                                    ),  
+                                ),
+                              ),//Fin Cancelar
+
+                              //Guardar
+                              Container(
+                                width: 130,
+                                height: 50,
+                                margin: const EdgeInsets.only(left: 20, right: 20),
+                                child: ElevatedButton(   
+                                  style: const ButtonStyle(
+                                    elevation: MaterialStatePropertyAll(5.0),
+                                    shadowColor: MaterialStatePropertyAll( Color.fromARGB(255, 5, 106, 165)),
                                     minimumSize:MaterialStatePropertyAll(Size(120, 40)),
                                     backgroundColor:MaterialStatePropertyAll( Color.fromARGB(255, 221, 203, 159)),
                                     side: MaterialStatePropertyAll(BorderSide(
@@ -290,21 +413,29 @@ class NuevoMedicamento extends StatelessWidget {
                                       width: 3.0
                                     ))
                                   ),
-                                  onPressed: () {/** */}, 
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => const Medicamentos()),
+                                    );
+                                  }, 
                                   child: const Text(
-                                    'Editar', 
+                                    'Guardar', 
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold
                                       ),
                                     ),  
                                 ),
-                              ),  
+                              ),//Fin Guardar
+                                
                             ],
-                          )
+                          ),
+
                         ],
                       ),
-                    )
+                    ),//FinFilaBotones
+
                   ],//FinChildenColumn
                 ),
               ),

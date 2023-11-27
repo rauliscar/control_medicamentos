@@ -1,10 +1,12 @@
 import 'package:control_medicamentos/Functions/appbar.dart';
-import 'package:control_medicamentos/Functions/botommBar.dart';
 import 'package:control_medicamentos/Functions/drawer.dart';
+import 'package:control_medicamentos/widgetsPantallas/medicamentos.dart';
 import 'package:flutter/material.dart';
 
 class MedicamentoAmoxilicina extends StatelessWidget {
-  const MedicamentoAmoxilicina({super.key});
+  MedicamentoAmoxilicina({Key? key}) : super(key: key);
+
+  int? nPastillasAmoxicilina = 6;
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +18,6 @@ class MedicamentoAmoxilicina extends StatelessWidget {
 
       // Drawer
       drawer: const ClassDrawer(),
-
-      // BottomNavigationBar
-      bottomNavigationBar: const BottomBar(),
 
       body: Column(
         
@@ -45,7 +44,7 @@ class MedicamentoAmoxilicina extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                            width: 210,
+                            width: 230,
                             margin: const EdgeInsets.only(top: 20.0),
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -166,8 +165,8 @@ class MedicamentoAmoxilicina extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Container(
-                            height: 90,
-                            padding: const EdgeInsets.all(6.0),
+                            height: 85,
+                            padding: const EdgeInsets.only(top:3.0, left: 6.0),
                             margin: const EdgeInsets.only(
                             top: 5.0,
                             left: 20.0,
@@ -183,7 +182,7 @@ class MedicamentoAmoxilicina extends StatelessWidget {
                             child: ListView(
                               children: const [
                                 Text(
-                                "Esta es la descripción de mi antibiótico, es amoxicilina , la cual se toma cada 8 horas \nTípica amoxicilina de toda la vida \nSi hay más texto\nPermite scroll",
+                                "Esta es la descripción de mi antibiótico, es amoxicilina , la cual se toma cada 8 horas \nTípica amoxicilina de toda la vida \nSi hay más texto hace scroll...\nPermite scroll",
                                 style: TextStyle(
                                   fontSize: 17,
                                 ),
@@ -276,9 +275,9 @@ class MedicamentoAmoxilicina extends StatelessWidget {
                                 borderRadius: const BorderRadius.all(Radius.circular(5)),
                                 border: Border.all(color: const Color.fromRGBO(0, 0, 0, 1), width: 2),
                               ),
-                              child: const Text(
-                                "6",
-                                style: TextStyle(
+                              child: Text(
+                                "$unidadesAmoxicilina",
+                                style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white
                                 ),
@@ -292,31 +291,46 @@ class MedicamentoAmoxilicina extends StatelessWidget {
 
                   //Botones
                   Container(
-                    margin: const EdgeInsets.only(top:13.0, left: 20.0),
+                    margin: const EdgeInsets.all(20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ButtonBar(
                           children: [
                             Container(
+                              width: 130,
+                              height: 70,
                               margin: const EdgeInsets.only(right: 20),
-                              child: ElevatedButton(  
+                              child: ElevatedButton(   
                                 style: const ButtonStyle(
                                   elevation: MaterialStatePropertyAll(5.0),
-                                  shadowColor: MaterialStatePropertyAll( Color.fromARGB(255, 5, 165, 10)),
+                                  shadowColor: MaterialStatePropertyAll( Color.fromARGB(255, 5, 106, 165)),
                                   minimumSize:MaterialStatePropertyAll(Size(120, 40)),
-                                  backgroundColor: MaterialStatePropertyAll( Color.fromARGB(255, 11, 77, 13))
+                                  backgroundColor:MaterialStatePropertyAll( Color.fromARGB(255, 221, 203, 159)),
+                                  side: MaterialStatePropertyAll(BorderSide(
+                                    color: Colors.black,
+                                    width: 3.0
+                                  ))
                                 ),
-                                onPressed: () {/** */},  
-                                child: const Text('Tratamientos'), 
+                                onPressed: () {/** */}, 
+                                child: const Text(
+                                  'Tratamientos', 
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold
+                                    ),
+                                  ),  
                               ),
-                            ),  
+                            ), 
+
                             Container(
+                              width: 130,
+                              height: 70,
                               margin: const EdgeInsets.only(left: 20),
                               child: ElevatedButton(   
                                 style: const ButtonStyle(
                                   elevation: MaterialStatePropertyAll(5.0),
-                                  shadowColor: MaterialStatePropertyAll( Color.fromARGB(255, 5, 165, 10)),
+                                  shadowColor: MaterialStatePropertyAll( Color.fromARGB(255, 5, 106, 165)),
                                   minimumSize:MaterialStatePropertyAll(Size(120, 40)),
                                   backgroundColor:MaterialStatePropertyAll( Color.fromARGB(255, 221, 203, 159)),
                                   side: MaterialStatePropertyAll(BorderSide(
@@ -338,7 +352,39 @@ class MedicamentoAmoxilicina extends StatelessWidget {
                         )
                       ],
                     ),
-                  )
+                  ),//FinFilaBotones
+
+                  //Atrás
+                    SizedBox(
+                      width: 180,
+                      height: 60,
+                      child: ElevatedButton(   
+                        style: const ButtonStyle(
+                          elevation: MaterialStatePropertyAll(5.0),
+                          shadowColor: MaterialStatePropertyAll( Color.fromARGB(255, 5, 106, 165)),
+                          minimumSize:MaterialStatePropertyAll(Size(120, 40)),
+                          backgroundColor:MaterialStatePropertyAll( Color.fromARGB(255, 207, 110, 31)),
+                          side: MaterialStatePropertyAll(BorderSide(
+                            color: Colors.black,
+                            width: 3.0
+                          ))
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const Medicamentos()),
+                          );
+                        }, 
+                        child: const Text(
+                          'Atrás', 
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold
+                            ),
+                          ),  
+                      ),
+                    ),//Fin Cancelar
+
                 ],//FinChildenColumn
               ),
             ),

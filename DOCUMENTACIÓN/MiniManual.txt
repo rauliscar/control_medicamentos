@@ -1,0 +1,19 @@
+***********************************************
+* Hola, soy el típico README.txt que nadie lee *
+***********************************************
+
+La barra inferior no me funciona correctamente, en el archivo bottom_bar_pruebas he utilizado la misma técnica que está en el archivo del marcador de git subido por ti, pero me genera conflicto con algo de mi interfaz. Por lo que dejo la otra opción aunque no funcione, de elemento visual. He puesto el acceso a las pantallas que más se van a utilizar en la aplicación.
+
+En la pantalla principal no he generado más medicamentos porque el código iba a multiplicarse mucho, ya que los cuadros son muy densos de código. La idea queda clara. Al activar o desactivar el botón switch, el medicamento se cambiaría de lugar, esto hay que programarlo. Solo está hecha la interfaz
+
+Mi intención es, poder crear medicamentos, y con esos medicamentos crear tratamientos o rutinas. Esa pantalla falta por realizar, por eso no está generado nada de selección temporal ni rutinas al crear el medicamento, quiero tenerlo separado y así estaría mejor organizado.
+
+Pantallas funcionales: Inicio, Medicamentos -> Nuevo Medicamento , Reposiciones, Medicamento(Amoxicilina).
+
+Solo he creado pantalla que permite visualizar la información del medicamento para un solo medicamento (Amoxicilina) de los que tengo, ya que el código sería copiar y pegar simplemente.
+
+Para entrar a ver un medicamento, solo hay que hacer click en el recuadro, en cualquiera de las pantallas. Se accede fácil y rápidamente a la visualización de la información.
+
+Posteriormente quiero añadir un cuadro de búsqueda dentro de la pantalla Medicamentos, para cuando exista una cantidad considerable, no perderse. 
+
+En la pantalla reposiciones la idea es que al pulsar en el "+", se abra un cuadro que simplemente permita añadir cuántas cajas se han comprado, y los comprimidos de cada caja, dejando por defecto los valores del último registro.

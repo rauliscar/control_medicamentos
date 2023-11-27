@@ -1,11 +1,11 @@
 import 'package:control_medicamentos/Functions/appbar.dart';
-import 'package:control_medicamentos/Functions/botommBar.dart';
+import 'package:control_medicamentos/Functions/bottom_bar.dart';
+import 'package:control_medicamentos/Functions/boton_switch_off.dart';
 import 'package:control_medicamentos/Functions/drawer.dart';
 import 'package:control_medicamentos/widgetsPantallas/medicamentos_amoxicilina.dart';
 import 'package:flutter/material.dart';
-import 'package:control_medicamentos/Functions/boton_switch.dart';
+import 'package:control_medicamentos/Functions/boton_switch_on.dart';
 
-import 'reposiciones.dart';
 
 class PantallaPrincipal extends StatelessWidget {
   const PantallaPrincipal({super.key});
@@ -14,27 +14,6 @@ class PantallaPrincipal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 67, 85, 133),
-
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Reposiciones()),
-                );
-        },
-        label: const Text(
-          'Añadir',
-          style: TextStyle(
-            color: Colors.black
-          ),
-          ),
-        icon: const Icon(
-          Icons.add,
-          color: Colors.black,),
-        elevation: 20,
-        backgroundColor: const Color.fromARGB( 255,129, 143, 180),
-        hoverElevation: 10.0,
-      ),
 
       //APPBAR
       appBar: const ClassAppBar(titleText: "Inicio"),
@@ -67,7 +46,7 @@ class PantallaPrincipal extends StatelessWidget {
                           top: 10.0,
                           bottom: 15.0
                         ),
-                        child: const Text("No Completadas (3)",  //En el futuro será un contador
+                        child: const Text("No Completadas (2)",  //En el futuro será un contador
                             textAlign: TextAlign.start,
                             style: TextStyle(
                               color: Colors.white,
@@ -83,7 +62,7 @@ class PantallaPrincipal extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const MedicamentoAmoxilicina()
+                          MaterialPageRoute(builder: (context) => MedicamentoAmoxilicina()
                           )
                         );
                         },
@@ -169,108 +148,19 @@ class PantallaPrincipal extends StatelessWidget {
                               ),
                             
                             //Botón Switch
-                            const BotonSwitch()
+                            const BotonSwitchOff()
                             
                             ],
                           ),
                         ),
                       ),
-
-                      //Medicamento NO tomado 2
-                      Container(
-                        height: 120,
-                        margin: const EdgeInsets.symmetric(
-                          vertical: 5.0
-                        ),
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 221, 203, 159),
-                          borderRadius: const BorderRadius.all(Radius.circular(5)),
-                          border: Border.all(color: Colors.black)
-                        ),
-
-                        //Estructura del cuadro
-                        child: Row(
-                          children: [
-                            
-                            //Contenedor de la imagen
-                            Container(
-                              width: 100,
-                              margin: const EdgeInsets.all(10.0),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: const BorderRadius.all(Radius.circular(5)),
-                                border: Border.all(color: const Color.fromRGBO(0, 0, 0, 1))
-                              ),
-                              child: Container(
-                                alignment: Alignment.center,
-                                child: Image.network(
-                                  "https://imgs.search.brave.com/kL6zwM63G4IQISCOLFjzleJO-VoU8-xDI5cgm4d6FD8/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9mYXJt/ZXguY2wvY2RuL3No/b3AvcHJvZHVjdHMv/aWJ1cHJvZmVuby02/MDAtbWcteC0yMC1j/b21wcmltaWRvcy1h/c2NlbmQtODYyNTEx/XzEwMjR4MTAyNC53/ZWJwP3Y9MTY5Mjk4/OTQyOA",
-                                  width: 95,
-                                  height: 95,
-                                  ),
-                              ),
-                            ),
-
-                            Column(
-
-                              children: [
-                                
-                                //Nombre del medicamento
-                                Container(
-                                  width: 170,
-                                  margin: const EdgeInsets.only(top: 10),
-                                  child: const Text(
-                                  "Ibuprofeno",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600,
-                                    decoration: TextDecoration.underline
-                                  ),
-                                  ),
-                                ),
-
-                                //Alias o motivo con el que lo conoce el usuario
-                                Container(
-                                  width: 170,
-                                  margin: const EdgeInsets.only(top: 15),
-                                  child: const Text(
-                                  "Pastilla resfriado",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 18,
-                                  ),
-                                  ),
-                                ),
-
-                                //Hora de toma
-                                Container(
-                                  width: 170,
-                                  margin: const EdgeInsets.only(top: 15),
-                                  child: const Text(
-                                  "15:30",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 20,
-                                  ),
-                                  ),
-                                )
-
-                              ]
-                            ),
-                          
-                          //Botón Switch
-                          const BotonSwitch()
-                          
-                          ],
-                        ),
-                      ),
                       
-                      //Medicamento NO tomado 3 (Amoxicilina)
+                      //Medicamento NO tomado 2 (Amoxicilina)
                       InkWell(
                         onTap: () {
                           Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const MedicamentoAmoxilicina()
+                          MaterialPageRoute(builder: (context) => MedicamentoAmoxilicina()
                           )
                           );
                         },
@@ -354,13 +244,13 @@ class PantallaPrincipal extends StatelessWidget {
                               ),
                             
                             //Botón Switch
-                            const BotonSwitch()
+                            const BotonSwitchOff()
                             
                             ],
                           ),
                       
                         ),
-                      ),
+                      ),//Fin Medicamento No Tomado 2
 
                       //TITULO completadas
                       Container(
@@ -381,17 +271,93 @@ class PantallaPrincipal extends StatelessWidget {
                       ),
 
                       //Medicamento tomado 1
+                      //Medicamento NO tomado 2
                       Container(
-                        height: 100,
+                        height: 120,
                         margin: const EdgeInsets.symmetric(
                           vertical: 5.0
                         ),
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 235, 191, 171),
+                          color: const Color.fromARGB(255, 221, 203, 159),
                           borderRadius: const BorderRadius.all(Radius.circular(5)),
-                          border: Border.all(color: const Color.fromRGBO(0, 0, 0, 1))
+                          border: Border.all(color: Colors.black)
                         ),
-                        child: const Text("Medicamento 1"),
+
+                        //Estructura del cuadro
+                        child: Row(
+                          children: [
+                            
+                            //Contenedor de la imagen
+                            Container(
+                              width: 100,
+                              margin: const EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: const BorderRadius.all(Radius.circular(5)),
+                                border: Border.all(color: const Color.fromRGBO(0, 0, 0, 1))
+                              ),
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Image.network(
+                                  "https://imgs.search.brave.com/kL6zwM63G4IQISCOLFjzleJO-VoU8-xDI5cgm4d6FD8/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9mYXJt/ZXguY2wvY2RuL3No/b3AvcHJvZHVjdHMv/aWJ1cHJvZmVuby02/MDAtbWcteC0yMC1j/b21wcmltaWRvcy1h/c2NlbmQtODYyNTEx/XzEwMjR4MTAyNC53/ZWJwP3Y9MTY5Mjk4/OTQyOA",
+                                  width: 95,
+                                  height: 95,
+                                  ),
+                              ),
+                            ),
+
+                            Column(
+
+                              children: [
+                                
+                                //Nombre del medicamento
+                                Container(
+                                  width: 170,
+                                  margin: const EdgeInsets.only(top: 10),
+                                  child: const Text(
+                                  "Ibuprofeno",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
+                                    decoration: TextDecoration.underline
+                                  ),
+                                  ),
+                                ),
+
+                                //Alias o motivo con el que lo conoce el usuario
+                                Container(
+                                  width: 170,
+                                  margin: const EdgeInsets.only(top: 15),
+                                  child: const Text(
+                                  "Pastilla resfriado",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 18,
+                                  ),
+                                  ),
+                                ),
+
+                                //Hora de toma
+                                Container(
+                                  width: 170,
+                                  margin: const EdgeInsets.only(top: 15),
+                                  child: const Text(
+                                  "15:30",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 20,
+                                  ),
+                                  ),
+                                )
+
+                              ]
+                            ),
+                          
+                          //Botón Switch
+                          const BotonSwitchOn()
+                          
+                          ],
+                        ),
                       ),
 
                       //Medicamento tomado 2

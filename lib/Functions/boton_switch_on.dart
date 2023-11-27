@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 //Clase de botón switch
-class BotonSwitch extends StatefulWidget {
-  const BotonSwitch({super.key});
+class BotonSwitchOn extends StatefulWidget {
+  const BotonSwitchOn({super.key});
 
   @override
-  State<BotonSwitch> createState() => _BotonSwitchState();
+  State<BotonSwitchOn> createState() => _BotonSwitchOnState();
   
 }
 
-class _BotonSwitchState extends State<BotonSwitch> {
-  bool light = false;
+class _BotonSwitchOnState extends State<BotonSwitchOn> {
+  bool light = true;
 
   final MaterialStateProperty<Icon?> thumbIcon = MaterialStateProperty.resolveWith<Icon?>(
     (Set<MaterialState> states) {

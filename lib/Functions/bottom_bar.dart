@@ -8,7 +8,7 @@ class BottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return NavigationBar(
         
-        height: 60,
+        height: 70,
         indicatorColor: const Color.fromARGB(255, 67, 85, 133),
         destinations: const <Widget>[
           NavigationDestination(
@@ -17,12 +17,16 @@ class BottomBar extends StatelessWidget {
             label: 'Inicio',
           ),
           NavigationDestination(
-            icon: Badge(child: Icon(Icons.notifications)),
-            label: 'Notificaciones',
+            icon: Icon(Icons.medical_information_sharp),
+            label: 'Tratamientos',
           ),
           NavigationDestination(
             icon: Icon(Icons.medication),
-            label: 'Medicinas',
+            label: 'Medicamentos',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.autorenew),
+            label: 'Reposiciones',
           ),
         ],
       );
