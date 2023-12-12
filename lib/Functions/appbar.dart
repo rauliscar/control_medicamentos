@@ -14,7 +14,15 @@ class ClassAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: const Color.fromARGB(255, 33, 23, 112),
-      title: Text(titleText),
+      iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
+      title: Text(
+        titleText,
+        style: const TextStyle(
+          color: Colors.white
+        ),
+        ),
       actions: [
         // Botón notificaciones
         IconButton(

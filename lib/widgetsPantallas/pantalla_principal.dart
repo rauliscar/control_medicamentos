@@ -1,6 +1,7 @@
 import 'package:control_medicamentos/Functions/appbar.dart';
 import 'package:control_medicamentos/Functions/bottom_bar.dart';
 import 'package:control_medicamentos/Functions/boton_switch_off.dart';
+import 'package:control_medicamentos/Functions/bottom_bar_prueba.dart';
 import 'package:control_medicamentos/Functions/drawer.dart';
 import 'package:control_medicamentos/widgetsPantallas/medicamentos_amoxicilina.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class PantallaPrincipal extends StatelessWidget {
       drawer: const ClassDrawer(),
 
       //BottomNavigationBar
-      bottomNavigationBar: const BottomBar(),
+      bottomNavigationBar:  BottomBarPrueba(0),
 
       //BODY
       body: Column(

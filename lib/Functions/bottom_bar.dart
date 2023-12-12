@@ -15,6 +15,7 @@ class BottomBar extends StatelessWidget {
             selectedIcon: Icon(Icons.home_outlined),
             icon: Icon(Icons.home_outlined),
             label: 'Inicio',
+            
           ),
           NavigationDestination(
             icon: Icon(Icons.medical_information_sharp),
@@ -29,6 +30,7 @@ class BottomBar extends StatelessWidget {
             label: 'Reposiciones',
           ),
         ],
+
       );
   }
 }

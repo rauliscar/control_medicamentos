@@ -3,16 +3,32 @@ import 'package:control_medicamentos/widgetsPantallas/pantalla_principal.dart';
 import 'package:control_medicamentos/widgetsPantallas/reposiciones.dart';
 import 'package:flutter/material.dart';
 
+class BottomBarPrueba extends StatelessWidget {
+  int _activo=0;
+  BottomBarPrueba(int itemActivo)
+  {
+    _activo=itemActivo;
+  }
 
-class BottomBar extends StatelessWidget {
-  const BottomBar({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+        backgroundColor: Colors.black,
+        currentIndex:_activo,
+        unselectedItemColor: Colors.black,
+        selectedItemColor: Colors.blue,
+        selectedLabelStyle: const TextStyle(
+          color: Colors.green
+        ),
+        unselectedLabelStyle: const TextStyle(
+          color: Colors.black
+        ),
         items: const[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
+            icon: Icon(
+              Icons.home,
+              ),
             label: 'Inicio',
           ),
           BottomNavigationBarItem(
@@ -22,13 +38,20 @@ class BottomBar extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Icon(Icons.medication),
             label: 'Medicamentos',
+            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.autorenew),
             label: 'Reposiciones',
           ),
         ],
+
         onTap: (value) {
+
+          // setState(() {
+          //   _selectedIndex = index;
+          // });
+
           switch (value) {
             case 0:
               Navigator.push(
@@ -65,3 +88,4 @@ class BottomBar extends StatelessWidget {
       );
   }
 }
+

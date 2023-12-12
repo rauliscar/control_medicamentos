@@ -14,13 +14,13 @@ class _ClassDrawerState extends State<ClassDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
 
             //Cabecera drawer
             SizedBox(
-              height: 150,
               child: DrawerHeader(
                 decoration: const BoxDecoration(
                   color:   Color.fromARGB(255, 67, 85, 133)
@@ -40,7 +40,7 @@ class _ClassDrawerState extends State<ClassDrawer> {
                             ),
                           )
                         ),
-
+            
                         Container(  
                           margin: const EdgeInsets.only(),
                           child: const Text(
@@ -49,7 +49,7 @@ class _ClassDrawerState extends State<ClassDrawer> {
                               color: Colors.white
                             ),)
                         ),
-
+            
                         Container(
                           margin: const EdgeInsets.only(left: 10),
                           child: const Text(
@@ -60,7 +60,7 @@ class _ClassDrawerState extends State<ClassDrawer> {
                         ),
                       ],
                     ),
-
+            
                     //Foto de perfil
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -76,7 +76,7 @@ class _ClassDrawerState extends State<ClassDrawer> {
                         ),
                       ],
                     )
-
+            
                   ],
                 ),
               ),
